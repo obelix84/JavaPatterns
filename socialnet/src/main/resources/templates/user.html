@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+<ul>
+    <h1>User Profile</h1>
+    <a th:href="@{/profile/}">View all profiles</a>
+    <div th:object="${user}">
+        <div th:text="*{id}"></div>
+        <div th:text="*{nickName}"></div>
+        <div th:text="*{fName}"></div>
+        <div th:text="*{lName}"></div>
+        <div th:text="*{dob}"></div>
+        <div th:text="*{sex}"></div>
+        <ul>
+            <li th:each="friend : *{friends}">
+                <div th:text="${friend.fName} +' '+ ${friend.lName}"></div>
+                <div><a th:href="@{/profile/}+${friend.id}">view profile</a></div>
+            </li>
+        </ul>
+    </div>
+</ul>
+</body>
+</html>
